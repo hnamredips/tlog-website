@@ -1,0 +1,448 @@
+.topic-area {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.topic_title_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 3px;
+}
+
+.topic_area_right {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.topic_title {
+  font-size: 18px;
+  font-weight: 550;
+}
+
+.topic_title,
+.topic_all_topics {
+  color: #023e73;
+}
+
+.topic_topic,
+.topic_all_topics,
+.topic_icon_right {
+  font-size: 13px;
+}
+
+.topic_topic,
+.topic_icon_right {
+  color: #828690;
+}
+
+.topic_button_delete {
+  padding: 5px !important;
+  background-color: #ffd8d8;
+  color: #ff1616 !important;
+  font-size: 16px !important;
+  border-radius: 3px;
+  border: 0;
+  cursor: pointer;
+}
+
+.topic_button_delete:hover {
+  background-color: #ff1616 !important;
+  color: #fff !important;
+}
+
+.topic_button_edit {
+  padding: 5px !important;
+  background-color: #d8e7ff;
+  color: #033e8c !important;
+  font-size: 16px !important;
+  margin-right: 5px;
+  border-radius: 3px;
+  border: 0;
+  cursor: pointer;
+}
+
+.topic_button_edit:hover {
+  background-color: #033e8c !important;
+  color: #fff !important;
+}
+
+.topic_table_container {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.topic_table_container a {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.topic_add {
+  padding: 10px;
+  width: 100px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #033e8c;
+  border: none;
+  cursor: pointer;
+}
+
+.topic_add:hover {
+  background-color: #1e78ff;
+}
+
+.popup_container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 9999 !important;
+}
+
+.popup_container h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+:where(.css-dev-only-do-not-override-5wsri9).ant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.popup-overlay {
+  z-index: 9999 !important;
+}
+
+.popup_buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-content {
+  background: none !important;
+  border: none !important;
+  width: 50% !important;
+}
+
+.all_topic_input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.all_topic_form {
+  width: 250px;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  color: #333;
+}
+
+.all_topic_form:focus {
+  border-color: #033e8c;
+}
+
+.status-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-radio-group .ant-radio-wrapper {
+  margin-bottom: 10px; /* Tạo khoảng cách giữa các lựa chọn */
+}
+
+.ant-radio-wrapper {
+  font-size: 16px; /* Tăng kích thước font */
+}
+
+.ant-form-item-label > label {
+  font-weight: 600; /* Tăng độ đậm của label */
+}
+
+/* Container tổng cho các nút */
+.popup-buttons {
+  display: flex;
+  justify-content: flex-end; /* Căn phải */
+  gap: 10px; /* Khoảng cách giữa các nút */
+  margin-top: 20px; /* Khoảng cách giữa các nút và form */
+}
+
+.button_edit {
+  box-shadow: none !important;
+  background-color: #033e8c !important;
+  color: #fff !important;
+  padding: 6px !important;
+  margin-top: 12px;
+  font-size: 14px !important;
+  width: 75px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+}
+
+.button_edit:hover {
+  background-color: #1e78ff !important;
+}
+
+.button_cancel {
+  box-shadow: none !important;
+  background-color: #ffd8d8 !important;
+  color: #ff1616 !important;
+  padding: 10px !important;
+  font-size: 14px !important;
+  width: 75px;
+}
+
+.button_cancel:hover {
+  background-color: #ff1616 !important;
+  color: #fff !important;
+}
+:where(.css-dev-only-do-not-override-5wsri9).ant-form-item
+  .ant-form-item-label {
+  text-align: start !important;
+}
+
+:where(.css-dev-only-do-not-override-5wsri9).ant-row {
+  flex-direction: column;
+}
+
+.topic_status_indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.topic_status_indicator.active {
+  background-color: #32cd32;
+}
+
+.topic_status_indicator.inactive {
+  background-color: #ff1616;
+}
+
+.treatment-plan-popup {
+  width: 50% !important;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+}
+
+.patient-info {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.treatment-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid #ddd;
+}
+
+.timeline-item {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.timeline-item:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #2c5d94;
+  position: absolute;
+  left: -6px;
+  top: 0;
+}
+
+.timeline-content {
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.timeline-content p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.treatment-timeline-scrollable {
+  max-height: 400px; /* Giới hạn chiều cao */
+  overflow-y: auto; /* Kích hoạt cuộn dọc */
+  border: 1px solid #ddd; /* Đường viền cho container */
+  padding: 10px; /* Khoảng cách bên trong */
+  margin-bottom: 20px; /* Khoảng cách giữa danh sách và form thêm mốc điều trị */
+  background-color: #f9f9f9; /* Màu nền để nổi bật */
+}
+
+.treatment-timeline {
+  list-style-type: none; /* Loại bỏ gạch đầu dòng */
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd; /* Đường phân cách giữa các mục */
+}
+
+.timeline-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timeline-content h4 {
+  margin: 0;
+}
+
+.timeline-content p {
+  margin: 5px 0 0;
+}
+
+.edit-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+.edit-icon:hover {
+  color: #0056b3;
+}
+
+/* Nút xem ảnh */
+.button_view_images {
+  background-color: #17a2b8; /* Màu xanh dương nhạt */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button_view_images:hover {
+  background-color: #117a8b; /* Đậm hơn khi hover */
+}
+
+/* Pop-up hiển thị hình ảnh */
+.image-popup-container {
+  width: 600px;
+  max-width: 90%;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.treatment-image {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.treatment-image:hover {
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Nút đóng trong pop-up hình ảnh */
+.button_close_image_popup {
+  background-color: #f44336; /* Màu đỏ */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.button_close_image_popup:hover {
+  background-color: #d32f2f; /* Màu đỏ đậm hơn khi hover */
+}
+
+/* Căn chỉnh modal */
+.ant-modal-content {
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Tiêu đề modal */
+.ant-modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Căn chỉnh bảng trong modal */
+.progress-table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+/* Màu nền header của bảng */
+.ant-table-thead > tr {
+  background-color: #f0f2f5;
+}
+
+/* Nút đóng modal */
+.ant-modal-close {
+  font-size: 20px;
+  color: #555;
+}
+
+.detail-button {
+  padding: 5px;
+  width: 100px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #033e8c;
+  border: none;
+  cursor: pointer;
+}
+
+.detail-button:hover {
+  background-color: #1e78ff;
+}

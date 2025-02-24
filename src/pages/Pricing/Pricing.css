@@ -1,0 +1,256 @@
+.pricing-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+}
+
+.pricing-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricing-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.highlight {
+  color: #06b6d4;
+}
+
+.pricing-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #64748b;
+  margin-bottom: 3rem;
+}
+
+.pricing-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.toggle-buttons {
+  display: flex;
+  background-color: white;
+  border-radius: 2rem;
+  padding: 0.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-buttons button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background: none;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.toggle-buttons button.active {
+  background-color: #86efac;
+  color: #064e3b;
+}
+
+.toggle-buttons button.active.yearly {
+  background-color: #86efac;
+}
+
+.discount-badge {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  background-color: #86efac;
+  color: #064e3b;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.promo-code {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.promo-code input {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.ok-button {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pricing-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card h2 {
+  font-size: 1.5rem;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+.price-info {
+  margin-bottom: 2rem;
+}
+
+.price-calculation {
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+
+.discount {
+  color: #ef4444;
+}
+
+.final-price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e293b;
+}
+
+.pricing-card.yearly .final-price {
+  font-size: 1.75rem; /* Slightly smaller for longer numbers */
+}
+
+.period {
+  font-size: 1rem;
+  color: #64748b;
+  font-weight: normal;
+}
+
+.billing-note {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #1e293b;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: rem;
+}
+
+.join-text {
+  font-size: 14px;
+  text-align: left;
+  color: #64748b;
+  margin-bottom: 1.45rem;
+}
+
+.features-title {
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.feature-item {
+  margin-bottom: 0.5rem;
+}
+
+.feature-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1e293b;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.check-icon {
+  color: #10b981;
+  margin-right: 0.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.2s ease;
+}
+
+.icon.rotated {
+  transform: rotate(180deg);
+}
+
+.benefits {
+  background-color: #fff;
+  color: white;
+  padding: 2rem 0;
+}
+
+.feature-details {
+  padding: 1rem;
+  background-color: #f8fafc;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .pricing-title {
+    font-size: 2rem;
+  }
+
+  .pricing-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toggle-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .promo-code {
+    flex-direction: column;
+  }
+
+  .ok-button {
+    width: 100%;
+  }
+}

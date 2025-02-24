@@ -132,97 +132,93 @@
   gap: 5px;
 }
 
-.dashboard-point-blue, .dashboard-point-green {
+.dashboard-point-blue,
+.dashboard-point-green {
   width: 8px;
   height: 8px;
   border-radius: 50%;
 }
 
-.dashboard-point-blue{
-    background-color: #1e88e5;
+.dashboard-point-blue {
+  background-color: #1e88e5;
 }
 
-.dashboard-point-green{
-    background-color: #82ca9d;
+.dashboard-point-green {
+  background-color: #82ca9d;
 }
 
-.dashboard-calender{
-    background-color: #fff;
-    border-radius: 10px;
-    width: 305px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.dashboard-calender {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 305px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.recharts-wrapper{
-    width: 100% !important;
-    height: 100% !important;
+.recharts-wrapper {
+  width: 100% !important;
+  height: 100% !important;
 }
 
-.dashboard-table{
-    background-color: #fff;
-    border-radius: 10px;
+.dashboard-table {
+  background-color: #fff;
+  border-radius: 10px;
 }
 
-.dashboard-title{
-    padding: 20px;
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
-    font-size: 18px;
-    color: #333;
-    font-weight: 600;
+.dashboard-title {
+  padding: 20px;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
 }
 
-.table .status{
-    padding: 5px;
-    border-radius: 5px;
+.table .status {
+  padding: 5px;
+  border-radius: 5px;
 }
 
-.table .status.Ongoing{
-    color: #fff;
-    background-color: rgba(54, 163, 235, 0.8);
+.table .status.Ongoing {
+  color: #fff;
+  background-color: rgba(54, 163, 235, 0.8);
 }
 
-.table .status.Done{
-    color: #fff;
-    background-color: rgba(255, 159, 64, 0.8);
+.table .status.Done {
+  color: #fff;
+  background-color: rgba(255, 159, 64, 0.8);
 }
 
-
-
-.css-v73c9r-MuiPaper-root-MuiTableContainer-root{
-    padding: 20px;
+.css-v73c9r-MuiPaper-root-MuiTableContainer-root {
+  padding: 20px;
 }
 
-.css-v73c9r-MuiPaper-root-MuiTableContainer-root{
-    box-shadow: none !important;
+.css-v73c9r-MuiPaper-root-MuiTableContainer-root {
+  box-shadow: none !important;
 }
 
-.css-1t7lzbz-MuiTableCell-root{
-    font-weight: bold !important;
-    color: #333 !important;
+.css-1t7lzbz-MuiTableCell-root {
+  font-weight: bold !important;
+  color: #333 !important;
 }
 
-.css-10ukr6t-MuiTableCell-root{
-    color: #888 !important;
-    font-size: 0.8rem !important;
+.css-10ukr6t-MuiTableCell-root {
+  color: #888 !important;
+  font-size: 0.8rem !important;
 }
 
 @media screen and (max-width: 1350px) {
+  .dashboard-chart-calender {
+    flex-wrap: wrap;
+  }
 
-    .dashboard-chart-calender{
-        flex-wrap: wrap;
-    }
-
-    .dashboard-calender{
-     width: 100%;
-    }
+  .dashboard-calender {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 900px) {
-    .dashboard-widget-wrapper{
-        flex-wrap: wrap;
-    }
+  .dashboard-widget-wrapper {
+    flex-wrap: wrap;
+  }
 }
-
-

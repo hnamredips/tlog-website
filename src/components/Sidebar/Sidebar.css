@@ -1,44 +1,48 @@
-
-:where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider{
-    background-color: #fff !important;
+:where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider {
+  background-color: #fff !important;
 }
 
-.sidebar-logo, .sidebar-logo-icon{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.sidebar-logo,
+.sidebar-logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.sidebar-logo{
-    padding: 0 10px;
-    height: 65px;
-    width: 201px;
-    background-color: #f5f5f5;
+.sidebar-logo {
+  padding: 0 10px;
+  height: 65px;
+  width: 201px;
+  background-color: #fff;
 }
 
-.sidebar-logo-icon{
-    flex-direction: row;
+.sidebar-logo-icon {
+  flex-direction: row;
 }
 
-.sidebar-logo-img{
-    width: 55px;
-    height: auto;
+.sidebar-logo-img {
+  width: 80px;
+  height: auto;
 }
 
-.sidebar-text{
-    color: #033e8c;
-    font-size: 20px;
+.sidebar-text {
+  color: #033e8c;
+  font-size: 20px;
 }
 
-:where(.css-dev-only-do-not-override-5wsri9).ant-menu-light.ant-menu-root.ant-menu-inline{
-    border-inline-end: 0 !important;
+:where(
+    .css-dev-only-do-not-override-5wsri9
+  ).ant-menu-light.ant-menu-root.ant-menu-inline {
+  border-inline-end: 0 !important;
 }
 
-:where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider .ant-layout-sider-children{
-    overflow-y: scroll;
-    height: 600px;
+:where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider
+  .ant-layout-sider-children {
+  overflow-y: scroll;
+  height: 600px;
 }
 
-:where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider .ant-layout-sider-children::-webkit-scrollbar{
-    width: 10px;
+:where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider
+  .ant-layout-sider-children::-webkit-scrollbar {
+  width: 10px;
 }

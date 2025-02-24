@@ -1,9 +1,9 @@
-
 import { PATH_NAME } from "../../constant/pathname";
 import { Link, useNavigate } from "react-router-dom";
 import { RxCalendar } from "react-icons/rx";
 import { LiaGraduationCapSolid } from "react-icons/lia";
 import { Menu } from "antd";
+import { PiUsersThree } from "react-icons/pi";
 import { CiLogout } from "react-icons/ci";
 import useAuth from "../hooks/useAuth";
 
@@ -20,17 +20,22 @@ const MenuList = () => {
     {
       key: "calender",
       icon: <RxCalendar />,
-      label: <Link to={PATH_NAME.CALENDAR}>Calendar</Link>,
+      label: <Link to={PATH_NAME.CALENDAR}>Lịch khám</Link>,
     },
+    // {
+    //   key: "courses",
+    //   icon: <PiUsersThree />,
+    //   label: <Link to={PATH_NAME.COURSE_INSTRUCTOR}>Quản lí khách hàng</Link>,
+    // },
     {
-      key: "course_ins",
-      icon: <LiaGraduationCapSolid />,
-      label: <Link to={PATH_NAME.COURSE_INSTRUCTOR}>Course</Link>,
+      key: "courses",
+      icon: <PiUsersThree />,
+      label: <Link to={PATH_NAME.PATIENT}>Quản lí khách hàng</Link>,
     },
     {
       key: "logout",
       icon: <CiLogout />,
-      label: "Log out",
+      label: "Đăng xuất",
       onClick: handleLogout,
     },
   ];

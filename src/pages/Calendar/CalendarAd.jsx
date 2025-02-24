@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import moment from "moment";
 import { momentLocalizer, Calendar } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./Calendar.css";
 import { SlArrowRight } from "react-icons/sl";
-import axios from "axios";
-import useAuth from "../../components/hooks/useAuth";
 import Popup from "reactjs-popup";
 
 // Set up moment localization
 moment.locale("vi");
 const localizer = momentLocalizer(moment);
 
-const CalendarIns = () => {
+const CalendarAd = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [currentView, setCurrentView] = useState("month"); // Default view is "month"
+
+  // Mock data for events
   const eventsData = [
     {
       id: 1,
@@ -165,4 +165,4 @@ const CalendarIns = () => {
   );
 };
 
-export default CalendarIns;
+export default CalendarAd;

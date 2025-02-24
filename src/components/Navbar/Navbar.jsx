@@ -5,7 +5,7 @@ import { Layout } from "antd";
 import { GoSearch } from "react-icons/go";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
-import logo from "../../assets/LogoSAP.png";
+import logo from "../../assets/logo_2.png";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 

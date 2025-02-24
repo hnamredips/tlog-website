@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Login.css";
-import logo from "../../assets/LogoSAP.png";
+import logo from "../../assets/logo_2.png";
 import { FaRegUser } from "react-icons/fa";
 import { TfiKey } from "react-icons/tfi";
 import axios from "axios";
@@ -18,67 +18,52 @@ const Login = () => {
   const [authen, setAuthen] = useState(null);
 
   // Hàm xử lý đăng nhập
- 
   const handleLogin = async (event) => {
     event.preventDefault();
-    const loginData = { username, password };
-    const url = "https://swdsapelearningapi.azurewebsites.net/api/User/login-web";
 
     try {
-      const response = await axios.post(url, loginData);
-      const token = response.data;
-      localStorage.setItem("Authen", JSON.stringify(token));
-
-      await fetchUserInfo(token); // Fetch user information based on token
-    } catch (error) {
-      console.log(error);
-      setLoginError("Username or password is incorrect.");
-    }
-  };
-
-  const fetchUserInfo = async (token) => {
-    try {
-      const response = await axios.get(
-        "https://swdsapelearningapi.azurewebsites.net/api/User/api/users",
+      const response = await fetch(
+        "https://backend.tlog.website/api/v1/auth/sign-in",
         {
-          headers: { Authorization: `Bearer ${token}` },
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
         }
       );
 
-      console.log("User info response:", response.data);
-      
+      const data = await response.json();
+      if (!data.isSuccess) {
+        throw new Error(data.message || "Đăng nhập thất bại.");
+      }
 
-      // Decoding and storing user info
-      const decodedToken = jwtDecode(token);
-      const userId = decodedToken.id;
-      console.log("Decoded token:", decodedToken);
-      const userInfo = {
-        userId: userId,
-        role: decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"],
-      };
+      const access_token = data.responseRequestModel.jwtToken.accessToken;
+      const refresh_token = data.responseRequestModel.jwtToken.refreshToken;
+      if (!access_token) {
+        throw new Error("Thiếu accessToken trong phản hồi của server.");
+      }
 
-      console.log("User info to be set:", userInfo);
+      const decodedToken = jwtDecode(access_token);
 
-      setAuth(userInfo); // Set user info in context
-      navigateBasedOnRole(userInfo.role);
-    } catch (error) {
-      console.error("Error fetching user info:", error);
-      setLoginError("Could not fetch user information.");
-    }
-  };
+      // 🛠 Trích xuất role chính xác từ token
+      const role =
+        decodedToken[
+          "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+        ];
 
-  const navigateBasedOnRole = (role) => {
-    console.log("Navigating based on role:", role);
-    switch (role) {
-      case "admin":
+      // Lưu token vào localStorage
+      localStorage.setItem("accessToken", access_token);
+      localStorage.setItem("refreshToken", refresh_token);
+
+      // Chuyển hướng dựa trên role (cập nhật lại theo dữ liệu đúng)
+      if (role === "Staff") {
         navigate(PATH_NAME.DASHBOARD);
-        break;
-      case "instructor":
+      } else if (role === "Doctor") {
         navigate(PATH_NAME.CALENDAR);
-        break;
-      default:
-        setLoginError("Username does not exist");
-        break;
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Lỗi đăng nhập:", error);
     }
   };
 
@@ -86,7 +71,6 @@ const Login = () => {
     <div className="login">
       <div className="login-logo-container">
         <img src={logo} alt="SAP Logo" className="login-logo" />
-        <h1 className="login-title">SAP Learn</h1>
       </div>
       <div className="login-form-container">
         <h2>Welcome Back</h2>
