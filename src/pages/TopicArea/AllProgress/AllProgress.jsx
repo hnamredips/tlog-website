@@ -24,7 +24,7 @@ const AllProgress = () => {
   const fetchPatients = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("accessToken");
       if (!token) {
         console.error("⚠️ Không có token, vui lòng đăng nhập!");
         return;
@@ -51,7 +51,7 @@ const AllProgress = () => {
   const fetchProgress = async (clinicAccountID) => {
     setProgressLoading(true);
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("accessToken");
       if (!token) {
         console.error("⚠️ Không có token, vui lòng đăng nhập!");
         return;

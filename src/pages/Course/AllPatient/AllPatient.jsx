@@ -25,7 +25,7 @@ const AllPatient = () => {
   const fetchPatients = async (page = 1, size = 20) => {
     setLoading(true);
     try {
-      const token = localStorage.getItem("token"); // 🟢 Lấy token từ localStorage
+      const token = localStorage.getItem("accessToken"); // 🟢 Lấy token từ localStorage
 
       if (!token) {
         console.error("⚠️ Token không tồn tại. Vui lòng đăng nhập lại!");

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./DashBoard.css";
 import { PiUsersThree, PiGraduationCap, PiCoinsLight } from "react-icons/pi";
 import { BsPerson } from "react-icons/bs";
@@ -26,8 +26,26 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import axios from "axios";
 
 const DashBoard = () => {
+  const [stats, setStats] = useState({
+    totalAppointmentToday: 0,
+    totalAppointmentThisWeek: 0,
+    totalAppointmentThisMonth: 0,
+    totalPatient: 0,
+    totalDoctor: 0,
+    monday: 0,
+    tuesday: 0,
+    wednesday: 0,
+    thursday: 0,
+    friday: 0,
+    saturday: 0,
+    sunday: 0,
+  });
+
+  const [loading, setLoading] = useState(true);
+
   const data = [
     {
       name: "Thứ 2",
@@ -66,30 +84,47 @@ const DashBoard = () => {
     },
   ];
 
-  const data_2 = [
-    {
-      id: 1,
-      name: "Working Design",
-      instructor: "Đặng Văn A",
-      s_date: "02/04/2024",
-      e_date: "02/08/2024",
-      enroll: "30/30",
-      status: "Done",
-    },
-    {
-      id: 2,
-      name: "Project Manager",
-      instructor: "Đặng Văn B",
-      s_date: "02/10/2024",
-      e_date: "02/12/2024",
-      enroll: "30/30",
-      status: "Ongoing",
-    },
-  ];
+  // 🟢 Hàm gọi API
+  const fetchStatistics = async () => {
+    setLoading(true);
+    try {
+      const token = localStorage.getItem("accessToken"); // Lấy token từ localStorage
+      if (!token) {
+        console.error("⚠️ Không tìm thấy accessToken. Vui lòng đăng nhập lại!");
+        return;
+      }
+
+      const response = await axios.post(
+        "https://backend.tlog.website/api/v1/clinic/statistic",
+        {}, // Body có thể bỏ trống nếu không cần gửi dữ liệu
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.isSuccess) {
+        setStats(response.data.responseRequestModel);
+      } else {
+        console.error("❌ API response error:", response.data.message);
+      }
+    } catch (error) {
+      console.error("❌ Lỗi khi gọi API thống kê:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 🟢 Gọi API khi component được mount
+  useEffect(() => {
+    fetchStatistics();
+  }, []);
 
   return (
     <div className="dashboard">
-      {/* Widget */}
+      {/* 🟢 Widget */}
       <div className="dashboard-widget-wrapper">
         <div className="dashboard-widget">
           <div className="dashboard-widget-card">
@@ -98,12 +133,15 @@ const DashBoard = () => {
                 <PiUsersThree />
               </span>
               <div className="dashboard-widget-card-text">
-                <h4 className="dashboard-number">25</h4>
+                <h4 className="dashboard-number">
+                  {stats.totalAppointmentThisMonth}
+                </h4>
                 <p className="dashboard-text">Tổng lịch hẹn</p>
               </div>
             </div>
           </div>
         </div>
+
         <div className="dashboard-widget">
           <div className="dashboard-widget-card">
             <div className="dashboard-widget-card-body">
@@ -111,12 +149,13 @@ const DashBoard = () => {
                 <BsPerson />
               </span>
               <div className="dashboard-widget-card-text">
-                <h4 className="dashboard-number">5</h4>
+                <h4 className="dashboard-number">{stats.totalDoctor}</h4>
                 <p className="dashboard-text">Nha sĩ</p>
               </div>
             </div>
           </div>
         </div>
+
         <div className="dashboard-widget">
           <div className="dashboard-widget-card">
             <div className="dashboard-widget-card-body">
@@ -124,7 +163,7 @@ const DashBoard = () => {
                 <PiGraduationCap />
               </span>
               <div className="dashboard-widget-card-text">
-                <h4 className="dashboard-number">50</h4>
+                <h4 className="dashboard-number">{stats.totalPatient}</h4>
                 <p className="dashboard-text">Khách hàng mới</p>
               </div>
             </div>

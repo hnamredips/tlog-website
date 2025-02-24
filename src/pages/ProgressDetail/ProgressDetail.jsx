@@ -22,7 +22,7 @@ const ProgressDetail = () => {
 
     const fetchProgressDetails = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("accessToken");
         if (!token) {
           console.error("⚠️ Không có token, vui lòng đăng nhập!");
           return;
@@ -61,12 +61,23 @@ const ProgressDetail = () => {
             <Step
               key={detail.progressDetailID}
               title={detail.name}
-              status={detail.progressStatusDisplay === "Completed" ? "finish" : "process"}
+              status={
+                detail.progressStatusDisplay === "Completed"
+                  ? "finish"
+                  : "process"
+              }
               description={
                 <Card className="progress-card">
-                  <p><strong>Mô tả:</strong> {detail.description}</p>
-                  <p><strong>Bắt đầu:</strong> {detail.startedAt}</p>
-                  <p><strong>Hoàn thành:</strong> {detail.completedAt ? detail.completedAt : "Đang thực hiện"}</p>
+                  <p>
+                    <strong>Mô tả:</strong> {detail.description}
+                  </p>
+                  <p>
+                    <strong>Bắt đầu:</strong> {detail.startedAt}
+                  </p>
+                  <p>
+                    <strong>Hoàn thành:</strong>{" "}
+                    {detail.completedAt ? detail.completedAt : "Đang thực hiện"}
+                  </p>
                 </Card>
               }
             />
