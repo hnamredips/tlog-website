@@ -4,16 +4,13 @@ import DashBoard from "./pages/DashBoard/DashBoard";
 import AllPatient from "./pages/Course/AllPatient/AllPatient";
 import AddCourse from "./pages/Course/AddCourse/AddCourse";
 import { PATH_NAME } from "./constant/pathname";
-import Fee from "./pages/Fee/Fee";
 import AllProgress from "./pages/TopicArea/AllProgress/AllProgress";
 import AddTopic from "./pages/TopicArea/AddTopic/AddTopic";
 import Layout_1 from "./components/Layout/Layout_1";
 import Layout_2 from "./components/Layout/Layout_2";
 import CalendarAd from "./pages/Calendar/CalendarAd";
 import Calendar from "./pages/Calendar/CalendarIns";
-import RequireAuth from "./components/ReqAuth/RequireAuth";
 import HomePage from "./pages/HomePage/HomePage";
-import Pricing from "./pages/Pricing/Pricing";
 import PatientDoc from "./pages/PatientDoc/PatientDoc";
 import ProgressDetail from "./pages/ProgressDetail/ProgressDetail";
 
@@ -23,7 +20,6 @@ const App = () => {
       <Routes>
         <Route path={PATH_NAME.LOGIN} element={<Login />} />
         <Route path={PATH_NAME.HOMEPAGE} element={<HomePage />} />
-        <Route path={PATH_NAME.PRICING} element={<Pricing />} />
 
         {/* admin */}
         {/* <Route element={<RequireAuth allowedRoles={["staff"]} />}></Route>*/}
