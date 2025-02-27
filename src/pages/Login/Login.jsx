@@ -3,7 +3,6 @@ import "./Login.css";
 import logo from "../../assets/logo_2.png";
 import { FaRegUser } from "react-icons/fa";
 import { TfiKey } from "react-icons/tfi";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { PATH_NAME } from "../../constant/pathname";
@@ -15,11 +14,10 @@ const Login = () => {
   const [loginError, setLoginError] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [authen, setAuthen] = useState(null);
 
-  // Hàm xử lý đăng nhập
   const handleLogin = async (event) => {
     event.preventDefault();
+    setLoginError(""); // Reset error message
 
     try {
       const response = await fetch(
@@ -33,28 +31,29 @@ const Login = () => {
 
       const data = await response.json();
       if (!data.isSuccess) {
-        throw new Error(data.message || "Đăng nhập thất bại.");
+        throw new Error(data.message || "Login failed.");
       }
 
       const access_token = data.responseRequestModel.jwtToken.accessToken;
       const refresh_token = data.responseRequestModel.jwtToken.refreshToken;
       if (!access_token) {
-        throw new Error("Thiếu accessToken trong phản hồi của server.");
+        throw new Error("Access token missing from server response.");
       }
 
       const decodedToken = jwtDecode(access_token);
-
-      // 🛠 Trích xuất role chính xác từ token
       const role =
         decodedToken[
           "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
         ];
 
-      // Lưu token vào localStorage
+      // Store tokens in localStorage
       localStorage.setItem("accessToken", access_token);
       localStorage.setItem("refreshToken", refresh_token);
 
-      // Chuyển hướng dựa trên role (cập nhật lại theo dữ liệu đúng)
+      // Set auth context
+      setAuth({ access_token, refresh_token, role });
+
+      // Redirect based on role
       if (role === "Staff") {
         navigate(PATH_NAME.DASHBOARD);
       } else if (role === "Doctor") {
@@ -63,22 +62,34 @@ const Login = () => {
         navigate("/");
       }
     } catch (error) {
-      console.error("Lỗi đăng nhập:", error);
+      setLoginError(error.message); // Display error to user
+      console.error("Login error:", error);
     }
+  };
+
+  // Handler for logo click to navigate to homepage
+  const handleLogoClick = () => {
+    navigate(PATH_NAME.HOMEPAGE);
   };
 
   return (
     <div className="login">
       <div className="login-logo-container">
-        <img src={logo} alt="SAP Logo" className="login-logo" />
+        <img
+          src={logo}
+          alt="SAP Logo"
+          className="login-logo"
+          onClick={handleLogoClick}
+          style={{ cursor: "pointer" }} // Optional: Adds a pointer cursor to indicate clickability
+        />
       </div>
       <div className="login-form-container">
         <h2>Welcome Back</h2>
-        <p className="login-banner">Log In to Your Account!</p>
+        <p className="login-banner">Log In to Your Account</p>
         {loginError && <p className="error-message">{loginError}</p>}
         <form onSubmit={handleLogin}>
           <div className="login-input-wrapper">
-            <FaRegUser className="login-input-icon" />
+            <FaRegUser className="login-input-icon" aria-hidden="true" />
             <input
               type="text"
               placeholder="Username"
@@ -86,10 +97,11 @@ const Login = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
+              aria-label="Username"
             />
           </div>
           <div className="login-input-wrapper">
-            <TfiKey className="login-input-icon" />
+            <TfiKey className="login-input-icon" aria-hidden="true" />
             <input
               type="password"
               placeholder="Password"
@@ -97,6 +109,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              aria-label="Password"
             />
           </div>
           <div className="login-remember-me">
