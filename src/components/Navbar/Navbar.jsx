@@ -65,52 +65,32 @@ const Navbar = () => {
         <div className="navbar">
           <div className="sidebar-logo">
             <div className="sidebar-logo-icon">
-              <img src={logo} alt="" className="sidebar-logo-img" />
+              <img src={logo} alt="Logo" className="sidebar-logo-img" />
             </div>
           </div>
-
-          <form className="navbar-form">
-            <div className="navbar-position">
-              <button className="navbar-search-button" type="submit">
-                <GoSearch className="navbar-search-icon" />
-              </button>
-              <input
-                type="text"
-                className="navbar-search"
-                placeholder="Search..."
-              />
-            </div>
-          </form>
         </div>
         <div className="navbar-right">
           <button className="navbar-noti-button" type="button">
             <IoNotificationsOutline className="navbar-noti-icon" />
             <span className="navbar-point"></span>
           </button>
+          {/* Profile Button */}
           <button
-            className="navbar-button-name"
-            ref={profileDropdownRef}
+            className="navbar-profile-button"
             onClick={toggleProfileDropdown}
           >
-            {userData ? userData.fullname : "User"}
+            {userData && userData.avatar ? (
+              <img
+                src={userData.avatar}
+                alt="User Avatar"
+                className="navbar-profile-avatar"
+              />
+            ) : (
+              <span className="navbar-profile-initials">
+                {userData?.fullName?.charAt(0) || "U"}
+              </span>
+            )}
           </button>
-          {isProfileDropdownOpen && (
-            <div className="navbar-dropdowns">
-              <div className="navbar-dropdown-item">
-                <div className="navbar-message">
-                  <h6>
-                    {userData.role.charAt(0).toUpperCase() +
-                      userData.role.slice(1)}
-                  </h6>
-                  <p>{userData.email}</p>
-                </div>
-              </div>
-              <div className="navbar-profile-wrapper">
-                <IoSettingsOutline className="navbar-icon" />
-                <div className="navbar-profile-item">Account Setting</div>
-              </div>
-            </div>
-          )}
         </div>
       </Header>
     </Layout>

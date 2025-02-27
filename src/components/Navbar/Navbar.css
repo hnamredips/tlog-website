@@ -38,41 +38,6 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-search {
-  background-color: #f5f5f5 !important;
-  border-color: transparent;
-  height: 40px;
-  padding-inline-start: 40px;
-  border-radius: 800px;
-  font-weight: 400;
-  outline: none;
-  width: 100%;
-  padding: 13px 13px 13px 40px;
-  border: 1px solid #d5dbe7;
-  color: #333;
-  line-height: 1;
-}
-
-.navbar-search::placeholder {
-  color: #667797;
-  font-size: 14px;
-}
-
-.navbar-search:focus-within {
-  border-color: #023e73;
-}
-
-.navbar-search-button {
-  font-size: 20px;
-  color: #a1a1a2;
-  position: absolute;
-  display: flex;
-  background-color: transparent;
-  border: 0;
-  inset-inline-start: 12px;
-  inset-block-start: 22px;
-  cursor: pointer;
-}
 .navbar-position {
   position: relative;
   margin-left: 10px;
@@ -89,7 +54,6 @@
 }
 
 .navbar-noti-button {
-  margin-top: 10px;
   font-size: 20px;
   background-color: #f5f5f5;
   color: #667797;
@@ -109,6 +73,7 @@
   color: #033e8c;
   cursor: pointer;
 }
+
 .navbar-point {
   width: 8px;
   height: 8px;
@@ -148,40 +113,104 @@
   display: flex;
   flex-direction: row;
   gap: 15px;
+  align-items: center;
 }
 
-.navbar-button-name {
+.navbar-profile-button {
+  background: none;
+  border: none;
   cursor: pointer;
-  border: 1px solid #a1a1a2;
-  width: 80px;
-  border-radius: 800px;
-  background-color: transparent;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  transition: background-color 0.2s;
 }
 
-.navbar-button-name:hover {
-  background: hsl(219, 94%, 96.1%);
-  color: #033e8c;
+.navbar-profile-button:hover {
+  background-color: hsl(219, 94%, 96.1%);
 }
+
+.navbar-profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navbar-profile-initials {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
 .navbar-dropdowns {
   position: absolute;
-  top: 55px;
+  top: 60px;
   right: 20px;
   background: white;
   border: 1px solid #ccc;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 240px;
   z-index: 1000;
-  border-radius: 12px;
+  border-radius: 8px;
+}
+
+.navbar-profile-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  color: #667797;
+  font-size: 14px;
+  border-bottom: 1px solid #efefef;
+}
+
+.navbar-profile-avatar-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-profile-info {
+  text-align: left;
+}
+
+.navbar-profile-info h6 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.navbar-profile-info span {
+  font-size: 12px;
+  color: #686f7a;
 }
 
 .navbar-dropdown-item {
   display: flex;
-  padding: 15px !important;
+  padding: 12px 15px !important;
   border-bottom: 1px solid #efefef !important;
   min-width: 100%;
   max-width: 100%;
   white-space: normal;
   display: block;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+}
+
+.navbar-dropdown-item:hover {
+  background-color: #f5f5f5;
+  color: #033e8c;
 }
 
 .navbar-message {
@@ -209,28 +238,13 @@
   text-align: left;
 }
 
-.navbar-profile-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  gap: 10px;
-  padding: 15px;
-  color: #667797;
-  font-size: 14px;
-  height: 50px;
-  border-radius: 8px;
-}
-
-.navbar-profile-wrapper:hover {
-  background: hsl(219, 94%, 96.1%);
-  color: #033e8c;
-}
-
 .navbar-icon {
   width: 20px;
   height: 20px;
+  margin-left: auto;
+  color: #667797;
 }
+
 @keyframes shaking {
   0% {
     transform: rotate(0);
