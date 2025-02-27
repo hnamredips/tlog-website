@@ -58,19 +58,24 @@
   padding-left: 27px;
 }
 
-:where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider .ant-layout-sider-children{
-    position: fixed;
+:where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider
+  .ant-layout-sider-children {
+  position: fixed;
 }
 
-.menu-bar {
+.menu-bar.bar {
   position: relative;
   margin-top: 15px;
 }
 
-:where(.css-dev-only-do-not-override-5wsri9).ant-menu-inline.ant-menu-root .ant-menu-item >.ant-menu-title-content{
+:where(.css-dev-only-do-not-override-5wsri9).ant-menu-inline.ant-menu-root
+  .ant-menu-item
+  > .ant-menu-title-content {
   color: #667797 !important;
 }
 
-:where(.css-dev-only-do-not-override-5wsri9).ant-menu-inline.ant-menu-root .ant-menu-item >.ant-menu-title-content:hover{
+:where(.css-dev-only-do-not-override-5wsri9).ant-menu-inline.ant-menu-root
+  .ant-menu-item
+  > .ant-menu-title-content:hover {
   color: #033e8c !important;
 }

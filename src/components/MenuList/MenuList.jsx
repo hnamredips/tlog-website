@@ -45,7 +45,7 @@ const MenuList = () => {
       onClick: handleLogout,
     },
   ];
-  return <Menu items={items} mode="inline" className="menu-bar"></Menu>;
+  return <Menu items={items} mode="inline" className="menu-bar bar"></Menu>;
 };
 
 export default MenuList;
