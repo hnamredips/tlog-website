@@ -60,12 +60,16 @@
 
 :where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider
   .ant-layout-sider-children {
+  /* position: fixed; */
+}
+
+.ant-layout-sider-children {
   position: fixed;
 }
 
-.menu-bar.bar {
+.menu-bar {
   position: relative;
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 
 :where(.css-dev-only-do-not-override-5wsri9).ant-menu-inline.ant-menu-root
