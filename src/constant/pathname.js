@@ -1,6 +1,6 @@
 export const PATH_NAME = {
-  LOGIN: "/",
-  HOMEPAGE: "/homepage",
+  LOGIN: "/login",
+  HOMEPAGE: "/",
   HISTORY: "/history",
   PRICING: "/pricing",
   DASHBOARD: "/dashboard",
