@@ -1,0 +1,309 @@
+/* Main container */
+.bill-container {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem 1rem;
+}
+
+.bill-card {
+  width: 100%;
+  max-width: 1024px;
+  background: white;
+  border-radius: 0.75rem;
+  padding: 2.5rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+.bill-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Container chứa nút về trang chủ */
+.home-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Nút quay lại trang chủ */
+.home-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: #4a5568;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.home-button:hover {
+  color: #2d3748;
+}
+
+/* Icon cho nút quay lại */
+.home-icon {
+  stroke: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.home-button:hover .home-icon {
+  transform: translateX(-3px);
+}
+
+.highlight {
+  color: #4fd1c5;
+}
+
+.bill-subtitle {
+  text-align: center;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+/* Bộ chọn gói */
+.bill-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.selector-label {
+  color: #4b5563;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.toggle-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #f3f4f6;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.toggle-button.left {
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+}
+
+.toggle-button.right {
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+}
+
+.toggle-button.active {
+  background-color: white;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+.toggle-button.active-green {
+  background-color: #10b981;
+  color: white;
+}
+
+.discount-badge {
+  position: absolute;
+  top: -24px; /* Đẩy lên trên */
+  right: 10px; /* Dịch sang trái để trỏ vào option "Năm" */
+  display: flex;
+  align-items: center;
+}
+
+.discount-text {
+  color: #10b981;
+  font-size: 0.875rem;
+}
+
+.discount-arrow {
+  transform: rotate(130deg); /* Xoay mũi tên xuống */
+  color: #10b981;
+}
+
+.promo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.promo-input {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.promo-button {
+  border: 1px solid #d1d5db;
+  border-radius: 9999px;
+  padding: 0.25rem 1rem;
+  font-size: 0.875rem;
+  background-color: white;
+}
+
+/* Plans container */
+.plans-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .plans-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Plan card */
+.plan-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.plan-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.plan-title.orange {
+  color: #f97316;
+}
+
+.plan-price-detail {
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.plan-discount {
+  font-size: 0.875rem;
+  color: #ef4444;
+  margin-bottom: 0.75rem;
+}
+
+.plan-total {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.equals {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-right: 0.25rem;
+}
+
+.amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-right: 0.25rem;
+}
+
+.period {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.payment-info {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.join-text {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+
+.join-button {
+  width: 100%;
+  background-color: #1e3a8a;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.join-button-free {
+  width: 100%;
+  background-color: #1e3a8a;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  margin: 2.7rem 0rem 4rem 0rem;
+  cursor: pointer;
+}
+
+.plan-description {
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.features-title {
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.feature-with-check {
+  display: flex;
+  align-items: center;
+}
+
+.check-icon {
+  color: #10b981;
+  margin-right: 0.5rem;
+}
+
+.chevron-icon {
+  color: #9ca3af;
+}

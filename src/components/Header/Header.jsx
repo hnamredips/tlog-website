@@ -16,7 +16,7 @@ const Header = () => {
               <RouterLink to={PATH_NAME.HOMEPAGE}>Trang chủ</RouterLink>
             </li>
             <li>
-              <RouterLink to={PATH_NAME.PRICING}>Bảng giá</RouterLink>
+              <RouterLink to={PATH_NAME.BILL}>Bảng giá</RouterLink>
             </li>
             <li>
               <ScrollLink to="history" smooth={true} duration={500}>

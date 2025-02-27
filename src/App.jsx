@@ -11,6 +11,7 @@ import Layout_2 from "./components/Layout/Layout_2";
 import CalendarAd from "./pages/Calendar/CalendarAd";
 import Calendar from "./pages/Calendar/CalendarIns";
 import HomePage from "./pages/HomePage/HomePage";
+import BillPage from "./pages/BillPage/BillPage";
 import PatientDoc from "./pages/PatientDoc/PatientDoc";
 import ProgressDetail from "./pages/ProgressDetail/ProgressDetail";
 
@@ -20,6 +21,7 @@ const App = () => {
       <Routes>
         <Route path={PATH_NAME.LOGIN} element={<Login />} />
         <Route path={PATH_NAME.HOMEPAGE} element={<HomePage />} />
+        <Route path={PATH_NAME.BILL} element={<BillPage />} />
 
         {/* admin */}
         {/* <Route element={<RequireAuth allowedRoles={["staff"]} />}></Route>*/}
