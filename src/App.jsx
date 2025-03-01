@@ -9,7 +9,7 @@ import AddTopic from "./pages/TopicArea/AddTopic/AddTopic";
 import Layout_1 from "./components/Layout/Layout_1";
 import Layout_2 from "./components/Layout/Layout_2";
 import CalendarAd from "./pages/Calendar/CalendarAd";
-import Calendar from "./pages/Calendar/CalendarIns";
+import CalendarIns from "./pages/Calendar/CalendarIns";
 import HomePage from "./pages/HomePage/HomePage";
 import BillPage from "./pages/BillPage/BillPage";
 import PatientDoc from "./pages/PatientDoc/PatientDoc";
@@ -41,7 +41,7 @@ const App = () => {
         {/* instructor */}
 
         <Route element={<Layout_2 />}>
-          <Route path={PATH_NAME.CALENDAR} element={<Calendar />} />
+          <Route path={PATH_NAME.CALENDAR} element={<CalendarIns />} />
           <Route path={PATH_NAME.PATIENT} element={<PatientDoc />} />
           {/* <Route path={PATH_NAME.COURSE_INSTRUCTOR} element={<CourseIns />} /> */}
         </Route>
