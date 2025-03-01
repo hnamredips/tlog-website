@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import DashBoard from "./pages/DashBoard/DashBoard";
-import AllPatient from "./pages/Course/AllPatient/AllPatient";
-import AddCourse from "./pages/Course/AddCourse/AddCourse";
+import AllPatient from "./pages/Patient/AllPatient/AllPatient";
+import AddPatient from "./pages/Patient/AddPatient/AddPatient";
 import { PATH_NAME } from "./constant/pathname";
 import AllProgress from "./pages/TopicArea/AllProgress/AllProgress";
 import AddTopic from "./pages/TopicArea/AddTopic/AddTopic";
@@ -28,7 +28,7 @@ const App = () => {
         <Route element={<Layout_1 />}>
           <Route path={PATH_NAME.DASHBOARD} element={<DashBoard />} />
           <Route path={PATH_NAME.PATIENT_ADMIN} element={<AllPatient />} />
-          <Route path={PATH_NAME.ADD_COURSE} element={<AddCourse />} />
+          <Route path={PATH_NAME.ADD_PATIENT} element={<AddPatient />} />
           <Route path={PATH_NAME.PROGRESS} element={<AllProgress />} />
           <Route
             path="/progress-detail/:progressID"

@@ -21,11 +21,6 @@
   z-index: -1;
 }
 
-.login-logo-container {
-  margin-bottom: 20px; /* Reduced from 40px to bring the form closer */
-  text-align: center;
-}
-
 .login-logo {
   width: 200px;
   height: auto;

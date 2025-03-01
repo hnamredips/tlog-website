@@ -153,9 +153,9 @@ const AllPatient = () => {
       </div>
 
       <div className="course_table_container">
-        {/* <Link to="/add-course">
-          <button className="course_add">Tạo mới</button>
-        </Link> */}
+        <Link to={PATH_NAME.ADD_PATIENT}>
+          <button className="course_add">Tạo bệnh nhân</button>
+        </Link>
 
         <Table
           columns={columns}

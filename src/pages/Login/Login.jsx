@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Login.css";
-import logo from "../../assets/logo_2.png";
+import logo from "../../assets/logo_app2.png";
 import { FaRegUser } from "react-icons/fa";
 import { TfiKey } from "react-icons/tfi";
 import { useNavigate } from "react-router-dom";

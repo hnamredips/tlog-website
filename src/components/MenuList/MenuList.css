@@ -83,3 +83,30 @@
   > .ant-menu-title-content:hover {
   color: #033e8c !important;
 }
+
+/* CSS cho nút OK (Đăng xuất) */
+.custom-logout-modal .ant-btn-primary {
+  background-color: #033e8c !important;
+  color: #fff !important;
+  border: none;
+  font-size: 14px !important;
+  padding: 8px 15px !important;
+}
+
+/* Căn giữa popup đăng xuất */
+.custom-logout-modal .ant-modal {
+  top: 6cqmax !important;
+  transform: translateY(-50%) !important;
+}
+
+/* Hover màu xanh nhạt */
+.custom-logout-modal .ant-btn-primary:hover {
+  background-color: #4770a5 !important;
+  color: #a09f9f;
+}
+
+/* CSS cho nút Cancel (Hủy) */
+.custom-logout-modal .ant-btn-default {
+  font-size: 14px !important;
+  padding: 8px 12px !important;
+}

@@ -89,17 +89,20 @@
 }
 
 .topic_add {
-  padding: 10px;
-  width: 100px;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  width: 200px;
   border-radius: 5px;
   color: #fff;
   background-color: #033e8c;
   border: none;
   cursor: pointer;
+  margin-left: 1070px;
 }
 
 .topic_add:hover {
-  background-color: #1e78ff;
+  background-color: #2256a3;
 }
 
 .popup_container {
@@ -417,9 +420,13 @@
 
 /* Căn chỉnh bảng trong modal */
 .progress-table-container {
-  max-height: 400px;
-  overflow-y: auto;
-  margin-top: 10px;
+  width: 100%;
+  overflow-x: auto; /* ✅ Cho phép cuộn ngang nếu nội dung quá lớn */
+}
+
+.ant-modal-body {
+  overflow-x: auto; /* ✅ Giúp modal không bị tràn nội dung */
+  max-width: 100%;
 }
 
 /* Màu nền header của bảng */

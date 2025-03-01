@@ -1,3 +1,5 @@
+import { Add } from "@mui/icons-material";
+
 export const PATH_NAME = {
   LOGIN: "/login",
   HOMEPAGE: "/",
@@ -31,4 +33,5 @@ export const PATH_NAME = {
   CALENDAR: "/instructor/calendar",
   COURSE_INSTRUCTOR: "/instructor/courses",
   PATIENT: "/doctor/patients",
+  ADD_PATIENT: "/doctor/add_patient",
 };
