@@ -60,6 +60,10 @@
 
 :where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider
   .ant-layout-sider-children {
+  /* position: fixed; */
+}
+
+.ant-layout-sider-children {
   position: fixed;
 }
 
