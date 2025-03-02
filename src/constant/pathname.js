@@ -30,7 +30,7 @@ export const PATH_NAME = {
   ADD_QUESTION_BANK: "/question_bank/add_question",
   ACCOUNT_SETTING: "/account_setting",
   CALENDAR_ADMIN: "/admin/calendar",
-  CALENDAR: "/instructor/calendar",
+  CALENDAR: "/doctor/calendar",
   COURSE_INSTRUCTOR: "/instructor/courses",
   PATIENT: "/doctor/patients",
   ADD_PATIENT: "/doctor/add_patient",

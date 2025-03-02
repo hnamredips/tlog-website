@@ -12,7 +12,7 @@ const MenuList = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedKey, setSelectedKey] = useState("dashboard");
+  const [selectedKey, setSelectedKey] = useState("calender"); // Mặc định là mục đầu tiên
 
   // Xử lý hiển thị popup khi bấm Đăng xuất
   const showLogoutConfirm = () => {
@@ -26,18 +26,22 @@ const MenuList = () => {
     navigate(PATH_NAME.LOGIN);
   };
 
+  // Hàm xử lý click vào menu item
+  const handleMenuClick = (key, onClick) => {
+    setSelectedKey(key); // Cập nhật trạng thái selectedKey
+    if (onClick) onClick();
+  };
+
   const items = [
     {
       key: "calender",
       icon: <RxCalendar />,
-      label: "Lịch khám",
-      onClick: () => navigate(PATH_NAME.CALENDAR),
+      label: <Link to={PATH_NAME.CALENDAR}>Quản lý Lịch hẹn</Link>,
     },
     {
       key: "courses",
       icon: <PiUsersThree />,
-      label: "Quản lí khách hàng",
-      onClick: () => navigate(PATH_NAME.PATIENT),
+      label: <Link to={PATH_NAME.PATIENT}>Quản lý Bệnh nhân</Link>,
     },
     {
       key: "logout",
@@ -62,7 +66,14 @@ const MenuList = () => {
       >
         <p>Bạn có chắc chắn muốn đăng xuất không?</p>
       </Modal>
-      <Menu items={items} mode="inline" className="menu-bar"></Menu>;
+
+      {/* Menu với selectedKeys */}
+      <Menu
+        items={items}
+        mode="inline"
+        className="menu-bar"
+        selectedKeys={[selectedKey]} // Gán selectedKey
+      />
     </>
   );
 };
