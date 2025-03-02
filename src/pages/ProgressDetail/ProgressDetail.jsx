@@ -265,21 +265,23 @@ const ProgressDetail = () => {
 
                     {/* Hiển thị nút điều khiển */}
                     {detail.progressStatusDisplay === "NotStart" ? (
-                      <Button
+                      <button
                         type="primary"
+                        className="add-progress-button"
                         onClick={() =>
                           handleStartProgress(detail.progressDetailID)
                         }
                       >
                         Bắt đầu
-                      </Button>
+                      </button>
                     ) : detail.progressStatusDisplay === "InProcess" ? (
-                      <Button
+                      <button
                         type="default"
+                        className="add-progress-button"
                         onClick={() => showUpdateModal(detail)}
                       >
                         Cập nhật
-                      </Button>
+                      </button>
                     ) : null}
                   </Card>
                 }

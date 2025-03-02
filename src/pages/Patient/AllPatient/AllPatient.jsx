@@ -143,12 +143,12 @@ const AllPatient = () => {
     <div className="course">
       <div className="course_title_container">
         <div className="course_title_left">
-          <div className="course_title">Quản lí khách hàng</div>
+          <div className="course_title">Quản lí bệnh nhân</div>
         </div>
         <div className="course_course_right">
-          <div className="course_course">Quản lí khách hàng</div>
+          <div className="course_course">Quản lí bệnh nhân</div>
           <SlArrowRight className="course_icon_right" />
-          <div className="course_all_courses">Tất cả khách hàng</div>
+          <div className="course_all_courses">Tất cả bệnh nhân</div>
         </div>
       </div>
 

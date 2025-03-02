@@ -63,7 +63,7 @@ const MenuList = () => {
           icon={<PiUsersThree />}
           onClick={() => navigate(PATH_NAME.PATIENT_ADMIN)}
         >
-          Quản lí khách hàng
+          Quản lí bệnh nhân
         </Menu.Item>
 
         <Menu.Item
