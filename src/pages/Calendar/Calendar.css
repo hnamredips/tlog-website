@@ -34,23 +34,6 @@ input[type="date"] {
   color: #033e8c;
 }
 
-.popup-content-1 button {
-  box-shadow: none !important;
-  background-color: #ffd8d8 !important;
-  color: #ff1616 !important;
-  padding: 10px !important;
-  font-size: 14px !important;
-  width: 75px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.popup-content-1 button:hover {
-  background-color: #ff1616 !important;
-  color: #fff !important;
-}
-
 .rbc-row-segment .rbc-event-content {
   font-size: 14px;
   white-space: normal !important;
@@ -114,4 +97,41 @@ input[type="date"] {
   height: 16px;
   border-radius: 50%;
   margin-right: 8px;
+}
+
+.popup-button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-create {
+  background-color: #033e8c !important;
+  color: #fff !important;
+  padding: 10px 15px !important;
+  font-size: 14px !important;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.btn-create:hover {
+  background-color: #022c64 !important;
+}
+
+.btn-cancel {
+  background-color: #ffd8d8 !important;
+  color: #ff1616 !important;
+  padding: 10px 15px !important;
+  font-size: 14px !important;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.btn-cancel:hover {
+  background-color: #ff1616 !important;
+  color: #fff !important;
 }

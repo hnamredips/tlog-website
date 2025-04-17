@@ -242,6 +242,7 @@ const CalendarIns = () => {
                   <hr />
                   <div style={{ marginTop: "20px" }}>
                     <h3>Thêm chi tiết lịch hẹn</h3>
+
                     <label>Ghi chú</label>
                     <textarea
                       value={note}
@@ -268,25 +269,25 @@ const CalendarIns = () => {
                       style={{ width: "100%", padding: 8, marginBottom: 20 }}
                     />
 
-                    <button
-                      onClick={handleCreateScheduleDetail}
-                      disabled={isSubmitting}
-                      style={{
-                        backgroundColor: "#007bff",
-                        color: "white",
-                        border: "none",
-                        padding: "10px 15px",
-                        cursor: "pointer",
-                        marginRight: 10,
-                      }}
-                    >
-                      {isSubmitting ? "Đang gửi..." : "Tạo chi tiết lịch hẹn"}
-                    </button>
+                    <div className="popup-button-row">
+                      <button
+                        onClick={handleCreateScheduleDetail}
+                        disabled={isSubmitting}
+                        className="btn-create"
+                      >
+                        {isSubmitting ? "Đang gửi..." : "Tạo chi tiết lịch hẹn"}
+                      </button>
+
+                      <button
+                        className="btn-cancel"
+                        onClick={() => setSelectedEvent(null)}
+                      >
+                        Đóng
+                      </button>
+                    </div>
                   </div>
                 </>
               )}
-
-              <button onClick={() => setSelectedEvent(null)}>Đóng</button>
             </>
           )}
         </div>

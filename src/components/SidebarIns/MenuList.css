@@ -51,20 +51,29 @@
   background-color: hsl(219, 94%, 96.1%) !important;
 }
 
-:where(.css-dev-only-do-not-override-5wsri9).ant-menu-light .ant-menu-item,
-:where(.css-dev-only-do-not-override-5wsri9).ant-menu-vertical
-  .ant-menu-submenu-title {
-  height: 0% !important;
-  padding-left: 27px;
+:where(.css-dev-only-do-not-override-5wsri9).ant-menu-light
+  .ant-menu-item-selected {
+  background-color: #e6f0ff !important;
+  color: #033e8c !important;
+  font-weight: 600;
 }
 
-:where(.css-dev-only-do-not-override-5wsri9).ant-layout-sider
-  .ant-layout-sider-children {
-  /* position: fixed; */
+:where(.css-dev-only-do-not-override-5wsri9).ant-menu-light
+  .ant-menu-item-selected
+  a {
+  color: #033e8c !important;
 }
 
-.ant-layout-sider-children {
-  position: fixed;
+:where(.css-dev-only-do-not-override-5wsri9).ant-menu-light
+  .ant-menu-item
+  .ant-menu-title-content {
+  color: #667797 !important;
+}
+
+:where(.css-dev-only-do-not-override-5wsri9).ant-menu-light
+  .ant-menu-item
+  .ant-menu-title-content:hover {
+  color: #033e8c !important;
 }
 
 .menu-bar {
@@ -72,19 +81,7 @@
   margin-top: 15px;
 }
 
-:where(.css-dev-only-do-not-override-5wsri9).ant-menu-inline.ant-menu-root
-  .ant-menu-item
-  > .ant-menu-title-content {
-  color: #667797 !important;
-}
-
-:where(.css-dev-only-do-not-override-5wsri9).ant-menu-inline.ant-menu-root
-  .ant-menu-item
-  > .ant-menu-title-content:hover {
-  color: #033e8c !important;
-}
-
-/* CSS cho nút OK (Đăng xuất) */
+/* Modal logout */
 .custom-logout-modal .ant-btn-primary {
   background-color: #033e8c !important;
   color: #fff !important;
@@ -93,19 +90,16 @@
   padding: 8px 15px !important;
 }
 
-/* Căn giữa popup đăng xuất */
 .custom-logout-modal .ant-modal {
   top: 6cqmax !important;
   transform: translateY(-50%) !important;
 }
 
-/* Hover màu xanh nhạt */
 .custom-logout-modal .ant-btn-primary:hover {
   background-color: #4770a5 !important;
   color: #a09f9f;
 }
 
-/* CSS cho nút Cancel (Hủy) */
 .custom-logout-modal .ant-btn-default {
   font-size: 14px !important;
   padding: 8px 12px !important;
