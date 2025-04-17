@@ -1,34 +1,93 @@
-.patient-doc-container {
-  padding: 20px;
+.doctor-patient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
-.patient-info-container {
+.patient_title_container {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 3px;
+}
+
+.patient_patient_right {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.patient_title {
+  font-size: 18px;
+  font-weight: 550;
+}
+
+.patient_title,
+.patient_all_patients {
+  color: #023e73;
+}
+
+.patient_patient,
+.patient_all_patients,
+.patient_icon_right {
+  font-size: 13px;
+}
+
+.patient_patient,
+.patient_icon_right {
+  color: #828690;
+}
+
+.doctor-patient-list .table-container {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
-.patient-card {
-  flex: 1;
+.doctor-patient-list .add-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.treatment-progress {
-  flex: 2;
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
 
-.update-progress-button {
-  margin-top: 20px;
+.status-indicator.active {
+  background-color: #28a745;
 }
 
-.detail-button {
-  padding: 5px;
-  width: 100px;
+.status-indicator.inactive {
+  background-color: #dc3545;
+}
+
+.image_add {
+  padding: 8px 15px;
+  font-size: 14px;
   border-radius: 5px;
   color: #fff;
   background-color: #033e8c;
   border: none;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
-.detail-button:hover {
-  background-color: #1e78ff;
+.image_add:hover {
+  background-color: #2256a3;
 }

@@ -182,23 +182,38 @@ const DashBoard = () => {
               </div>
             </div>
           </div>
-          <ResponsiveContainer width={"100%"} height={300}>
-            <BarChart
-              data={data}
-              margin={{
-                top: 20,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="Tổng" stackId="a" fill="#1e88e5" />
-            </BarChart>
-          </ResponsiveContainer>
+          <ResponsiveContainer width="100%" height={300}>
+  <AreaChart
+    data={[
+      { name: "Thứ 2", LịchHẹn: stats.monday },
+      { name: "Thứ 3", LịchHẹn: stats.tuesday },
+      { name: "Thứ 4", LịchHẹn: stats.wednesday },
+      { name: "Thứ 5", LịchHẹn: stats.thursday },
+      { name: "Thứ 6", LịchHẹn: stats.friday },
+      { name: "Thứ 7", LịchHẹn: stats.saturday },
+      { name: "CN", LịchHẹn: stats.sunday },
+    ]}
+    margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
+  >
+    <defs>
+      <linearGradient id="colorLichHen" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="5%" stopColor="#1e88e5" stopOpacity={0.8} />
+        <stop offset="95%" stopColor="#1e88e5" stopOpacity={0} />
+      </linearGradient>
+    </defs>
+    <XAxis dataKey="name" />
+    <YAxis />
+    <CartesianGrid strokeDasharray="3 3" />
+    <Tooltip />
+    <Area
+      type="monotone"
+      dataKey="LịchHẹn"
+      stroke="#1e88e5"
+      fillOpacity={1}
+      fill="url(#colorLichHen)"
+    />
+  </AreaChart>
+</ResponsiveContainer>
         </div>
 
         {/* Calendar */}

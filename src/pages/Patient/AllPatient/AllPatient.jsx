@@ -22,7 +22,7 @@ const AllPatient = () => {
   });
 
   // 🟢 Gọi API lấy danh sách bệnh nhân
-  const fetchPatients = async (page = 1, size = 20) => {
+  const fetchPatients = async (page = 1, size = 50) => {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken"); // 🟢 Lấy token từ localStorage

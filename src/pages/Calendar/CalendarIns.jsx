@@ -5,64 +5,145 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./Calendar.css";
 import { SlArrowRight } from "react-icons/sl";
 import axios from "axios";
-import useAuth from "../../components/hooks/useAuth";
 import Popup from "reactjs-popup";
 
-// Set up moment localization
 moment.locale("vi");
 const localizer = momentLocalizer(moment);
 
 const CalendarIns = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [currentView, setCurrentView] = useState("month"); // Default view is "month"
-  const eventsData = [
-    {
-      id: 1,
-      title: "Meeting",
-      start: new Date(2024, 8, 6, 10, 30),
-      end: new Date(2024, 8, 6, 11, 30),
-      description: "Team meeting to discuss project updates.",
-      startTime: "10:30",
-      endTime: "11:30",
-      course: "Project Management",
-      status: "Đã hoàn thành", // Trạng thái
-    },
-    {
-      id: 2,
-      title: "Nhổ răng",
-      start: new Date(2024, 8, 7, 8, 0),
-      end: new Date(2024, 8, 7, 9, 0),
-      description: "Appointment for tooth extraction.",
-      startTime: "08:00",
-      endTime: "09:00",
-      course: "Dental Appointment",
-      status: "Lịch hẹn", // Trạng thái
-    },
-    {
-      id: 3,
-      title: "Meeting",
-      start: new Date(2024, 8, 8, 9, 0),
-      end: new Date(2024, 8, 8, 10, 0),
-      description: "Client meeting for project demo.",
-      startTime: "09:00",
-      endTime: "10:00",
-      course: "Client Meeting",
-      status: "Bị hủy/Nghỉ", // Trạng thái
-    },
-  ];
+  const [eventsData, setEventsData] = useState([]);
+  const [note, setNote] = useState("");
+  const [precriptionNotes, setPrecriptionNotes] = useState("");
+  const [followUpDate, setFollowUpDate] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const fetchTodayAppointments = async () => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      console.error("⚠️ Không tìm thấy accessToken. Vui lòng đăng nhập lại!");
+      return;
+    }
+
+    try {
+      const response = await axios.get(
+        "https://backend.tlog.website/api/v1/schedule/doctor/today?page=1&size=50",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const items =
+        response.data?.responseRequestModel?.todayAppointmentResponse?.items ||
+        [];
+
+      const mappedEvents = items.map((item) => {
+        const fromTime = item.from ? item.from.slice(0, 5) : "00:00";
+        const toTime = item.to ? item.to.slice(0, 5) : "00:00";
+        const statusText =
+          item.appointmentStatus === "Completed"
+            ? "Đã hoàn thành"
+            : item.appointmentStatus === "Canceled"
+            ? "Bị hủy/Nghỉ"
+            : "Lịch hẹn";
+
+        return {
+          id: item.appointmentID,
+          title: `${item.patientName} - ${item.serviceDetailName}`,
+          start: new Date(`${item.appointmentDate}T${item.from || "00:00:00"}`),
+          end: new Date(`${item.appointmentDate}T${item.to || "00:00:00"}`),
+          description: item.reason || "Không có mô tả",
+          startTime: fromTime,
+          endTime: toTime,
+          course: item.serviceDetailName,
+          status: statusText,
+          hasDetail: item.appointmentStatus === "Completed",
+        };
+      });
+
+      setEventsData(mappedEvents);
+    } catch (error) {
+      console.error("❌ Lỗi khi gọi API lịch hẹn hôm nay:", {
+        message: error.message,
+        status: error.response?.status,
+        data: error.response?.data,
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchTodayAppointments();
+  }, []);
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
   };
 
+  const handleCreateScheduleDetail = async () => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      alert("❗ Vui lòng đăng nhập lại để tạo chi tiết lịch hẹn.");
+      return;
+    }
+
+    if (!note || !precriptionNotes || !followUpDate) {
+      alert("⚠️ Vui lòng nhập đầy đủ thông tin trước khi gửi.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await axios.post(
+        "https://backend.tlog.website/api/v1/schedule/doctor/appointment-detail",
+        {
+          appointmentDetailID: selectedEvent.id,
+          note,
+          precriptionNotes,
+          followUpDate,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      alert("✅ Tạo chi tiết lịch hẹn thành công!");
+
+      // Ẩn form bằng cách set hasDetail
+      setSelectedEvent((prev) => ({
+        ...prev,
+        hasDetail: true,
+      }));
+
+      setNote("");
+      setPrecriptionNotes("");
+      setFollowUpDate("");
+    } catch (err) {
+      console.error("❌ Lỗi tạo chi tiết lịch:", err);
+      alert("❌ Lỗi tạo chi tiết lịch hẹn. Vui lòng thử lại!");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const eventStyleGetter = (event) => {
     let backgroundColor;
-    if (event.status === "Lịch hẹn") {
-      backgroundColor = "#295895db"; // Màu xanh dương
-    } else if (event.status === "Đã hoàn thành") {
-      backgroundColor = "#5cb85c"; // Màu xanh lá
-    } else if (event.status === "Bị hủy/Nghỉ") {
-      backgroundColor = "#d9534f"; // Màu đỏ
+    switch (event.status) {
+      case "Lịch hẹn":
+        backgroundColor = "#295895db";
+        break;
+      case "Đã hoàn thành":
+        backgroundColor = "#5cb85c";
+        break;
+      case "Bị hủy/Nghỉ":
+        backgroundColor = "#d9534f";
+        break;
+      default:
+        backgroundColor = "#888";
     }
 
     return {
@@ -79,7 +160,7 @@ const CalendarIns = () => {
     <div className="calendar">
       <div className="course_title_container">
         <div className="course_title_left">
-          <div className="course_title">Xem lịch hẹn</div>
+          <div className="course_title">Lịch hẹn hôm nay</div>
         </div>
         <div className="course_course_right">
           <div className="course_course">Lịch hẹn</div>
@@ -89,54 +170,55 @@ const CalendarIns = () => {
       </div>
 
       {/* Legend */}
+      <div className="calendar-legend">
+        <div className="legend-item">
+          <span
+            className="legend-color"
+            style={{ backgroundColor: "#295895db" }}
+          ></span>
+          <span>Lịch hẹn</span>
+        </div>
+        <div className="legend-item">
+          <span
+            className="legend-color"
+            style={{ backgroundColor: "#5cb85c" }}
+          ></span>
+          <span>Đã hoàn thành</span>
+        </div>
+        <div className="legend-item">
+          <span
+            className="legend-color"
+            style={{ backgroundColor: "#d9534f" }}
+          ></span>
+          <span>Bị hủy/Nghỉ</span>
+        </div>
+      </div>
 
       {/* Calendar */}
       <div className="calendar-container">
-        <div className="calendar-legend">
-          <div className="legend-item">
-            <span
-              className="legend-color"
-              style={{ backgroundColor: "#295895db" }}
-            ></span>
-            <span>Lịch hẹn</span>
-          </div>
-          <div className="legend-item">
-            <span
-              className="legend-color"
-              style={{ backgroundColor: "#5cb85c" }}
-            ></span>
-            <span>Đã hoàn thành</span>
-          </div>
-          <div className="legend-item">
-            <span
-              className="legend-color"
-              style={{ backgroundColor: "#d9534f" }}
-            ></span>
-            <span>Bị hủy/Nghỉ</span>
-          </div>
-        </div>
         <Calendar
-          views={["day", "week", "month"]}
-          selectable
+          views={["day"]}
+          defaultView="day"
           localizer={localizer}
-          defaultDate={new Date(2024, 8, 6)} // Đặt ngày mặc định
-          defaultView={currentView} // Kết hợp view động
+          date={new Date()}
+          toolbar={false}
           events={eventsData}
-          style={{ height: "100vh" }}
+          style={{ height: "85vh" }}
           onSelectEvent={handleEventClick}
-          eventPropGetter={eventStyleGetter} // Áp dụng màu sắc dựa trên trạng thái
+          eventPropGetter={eventStyleGetter}
         />
       </div>
 
-      {/* Popup hiển thị thông tin sự kiện */}
+      {/* Popup */}
       <Popup
         open={selectedEvent !== null}
         onClose={() => setSelectedEvent(null)}
+        modal
       >
         <div className="popup-content-1">
           {selectedEvent && (
             <>
-              <h3>{selectedEvent.title}</h3>
+              <h2>{selectedEvent.title}</h2>
               <p>
                 <strong>Course:</strong> {selectedEvent.course}
               </p>
@@ -154,9 +236,57 @@ const CalendarIns = () => {
               <p>
                 <strong>Status:</strong> {selectedEvent.status}
               </p>
-              <div className="popup_button_1">
-                <button onClick={() => setSelectedEvent(null)}>Close</button>
-              </div>
+
+              {!selectedEvent.hasDetail && (
+                <>
+                  <hr />
+                  <div style={{ marginTop: "20px" }}>
+                    <h3>Thêm chi tiết lịch hẹn</h3>
+                    <label>Ghi chú</label>
+                    <textarea
+                      value={note}
+                      onChange={(e) => setNote(e.target.value)}
+                      placeholder="Nhập ghi chú cho cuộc hẹn..."
+                      rows={3}
+                      style={{ width: "100%", marginBottom: 10 }}
+                    />
+
+                    <label>Ghi chú thuốc</label>
+                    <textarea
+                      value={precriptionNotes}
+                      onChange={(e) => setPrecriptionNotes(e.target.value)}
+                      placeholder="VD: Paracetamol 500mg..."
+                      rows={3}
+                      style={{ width: "100%", marginBottom: 10 }}
+                    />
+
+                    <label>Ngày tái khám</label>
+                    <input
+                      type="date"
+                      value={followUpDate}
+                      onChange={(e) => setFollowUpDate(e.target.value)}
+                      style={{ width: "100%", padding: 8, marginBottom: 20 }}
+                    />
+
+                    <button
+                      onClick={handleCreateScheduleDetail}
+                      disabled={isSubmitting}
+                      style={{
+                        backgroundColor: "#007bff",
+                        color: "white",
+                        border: "none",
+                        padding: "10px 15px",
+                        cursor: "pointer",
+                        marginRight: 10,
+                      }}
+                    >
+                      {isSubmitting ? "Đang gửi..." : "Tạo chi tiết lịch hẹn"}
+                    </button>
+                  </div>
+                </>
+              )}
+
+              <button onClick={() => setSelectedEvent(null)}>Đóng</button>
             </>
           )}
         </div>
