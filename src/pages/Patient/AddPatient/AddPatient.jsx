@@ -55,7 +55,7 @@ const AddPatient = () => {
       return;
     }
 
-    const convertedGender = gender === "Male" ? 1 : 0;
+    const convertedGender = gender === "Male" ? 0 : 1;
     const requestData = {
       fullName: fullName.trim(), // Loại bỏ khoảng trắng thừa
       username,
