@@ -220,21 +220,21 @@ const CalendarIns = () => {
             <>
               <h2>{selectedEvent.title}</h2>
               <p>
-                <strong>Course:</strong> {selectedEvent.course}
+                <strong>Tiêu đề:</strong> {selectedEvent.course}
               </p>
               <p>
-                <strong>Description:</strong> {selectedEvent.description}
+                <strong>Mô tả:</strong> {selectedEvent.description}
               </p>
               <p>
-                <strong>Date:</strong>{" "}
+                <strong>Ngày khám:</strong>{" "}
                 {moment(selectedEvent.start).format("dddd, DD/MM/YYYY")}
               </p>
               <p>
-                <strong>Time:</strong> {selectedEvent.startTime} -{" "}
+                <strong>Thời gian:</strong> {selectedEvent.startTime} -{" "}
                 {selectedEvent.endTime}
               </p>
               <p>
-                <strong>Status:</strong> {selectedEvent.status}
+                <strong>Trạng thái:</strong> {selectedEvent.status}
               </p>
 
               {!selectedEvent.hasDetail && (
