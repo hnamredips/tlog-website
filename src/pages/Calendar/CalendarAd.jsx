@@ -173,7 +173,12 @@ const CalendarAd = () => {
                 <strong>Trạng thái:</strong> {selectedEvent.status}
               </p>
               <div className="popup_button_1">
-                <button onClick={() => setSelectedEvent(null)}>Đóng</button>
+                <button
+                  className="btn-cancel"
+                  onClick={() => setSelectedEvent(null)}
+                >
+                  Đóng
+                </button>
               </div>
             </>
           )}
